@@ -61,6 +61,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <DHT.h>
 #include <Adafruit_GFX.h>       // fonts and graphic functions
 #include <Adafruit_PCD8544.h>
+
+// Change this according the path where you've uploaded the icons, useful for viewing
+// the icon on home page when you pin the url
+String IconsHost="http://www.[YOURHOT].com/[PATH-TO-ICONS]/";
 #include "webpage.h"
 
 /*
@@ -77,17 +81,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define D10  1      // TX
 */
 
-// led (wi-fi activity)
-#define LED         16 // (D0)
 // comment for real usage
 // uncomment for test mode (usage without sensors connected)
 //#define TEST
-
-// not possible to connect sensor on D8/GPIO15 since this will cause upload failing 
-// (maybe HCS function of Soc is affected by pullup resistor required by DHT22?)
-#define DHTPIN      13 // (D7)
-#define DHTTYPE DHT22 // Sensor used: DHT22 (aka AM2302) OR AM2321
-#define SEALEVELPRESSURE_HPA (1013.25) // used by BME library for computation of altitude (1013.25hPa = 1atm)
 
 // standard pressure at my home
 // http://www.villasmunta.it/Laboratorio/un_semplice_algoritmo_per_il_cal.htm
@@ -95,12 +91,15 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // PHPA = (0,9877^(240/100))*1013,25 = 983.6
 #define MY_STANDARD_PRESSURE (983.6) 
 
-#define OSWATCH_RESET_TIME 20 // 20 seconds of watchdog timer
-#define USE_STATIC_IP // comment this if you want address assigned by DHCP
+// 20 seconds for watchdog timer
+#define OSWATCH_RESET_TIME 20
+
+// comment this if you want IP address assigned by DHCP
+#define USE_STATIC_IP
 
 // change SSID and passphrase according your network
 const char* ssid = "[YOUR SSID]";
-const char* password = "[YOUR PASSWORD]";
+const char* password = "[YOUR PASSPHRASE]";
 
 // data used for static IP configuration
 #ifdef USE_STATIC_IP
@@ -108,6 +107,15 @@ const char* password = "[YOUR PASSWORD]";
   IPAddress gateway(192,168,1,1); // router address
   IPAddress subnet(255,255,255,0); // subnet mask
 #endif
+
+// led (wi-fi activity)
+#define LED         16 // (D0)
+
+// not possible to connect sensor on D8/GPIO15 since this will cause upload failing 
+// (maybe HCS function of Soc is affected by pullup resistor required by DHT22?)
+#define DHTPIN      13 // (D7)
+#define DHTTYPE DHT22 // Sensor used: DHT22 (aka AM2302) OR AM2321
+#define SEALEVELPRESSURE_HPA (1013.25) // used by BME library for computation of altitude (1013.25hPa = 1atm)
 
 float h,t,hi,p,a,max_t,min_t,dp; // humidity,temperature,heat index,pressure,altitude,max temperature,min temperature,pressure delta
 String sensorRead; // html string with sensor values separated by comma, used for ajax refresh
@@ -482,7 +490,9 @@ void loop()
     // body
     String p3= "<body onLoad=\"getValues()\">\n\r"; 
     p3 += "<div style=\"text-align:center\">\n\r";
-    
+
+    // temperature
+    // click on temperature will reset min and max
     p3 += "<div class=\"st\">temperatura</div>\n\r";
     p3 += "<a id=\"t\" class=\"bo\" style=\"background-color:#ff6600; margin-bottom:8px;\" href=\"?reset\">";
     p3 += String(t,1);
@@ -501,6 +511,7 @@ void loop()
     p3 += "<div id=\"tmax\" class=\"bom\" style=\"background-color:#ff4300; width:49%;\">&#8679;&nbsp;";
     p3 += String(max_t,1);
     p3 += "&deg;</div>\n\r";
+    
     p3 += "</div>\n\r";
     
     // heat index
@@ -514,15 +525,18 @@ void loop()
     p3 += String(h,1);
     p3 += "%</div>\n\r";
     
-    // pressure and altitude
+    // pressure
     p3 += "<div class=\"st\">pressione</div>\n\r";
     p3 += "<div id=\"p\" class=\"bo\" style=\"background-color:#339933\">";
     p3 += String(p,2);
     p3 += "hPa</div>\n\r";
-    
-    p3 += "<div id=\"c\" class=\"bo\" style=\"background-color:#339966; font-size:15pt;\">";
+
+    // delta pressure
+    p3 += "<div id=\"dp\" class=\"bo\" style=\"background-color:#339966; font-size:15pt;\">";
+    p3 += String(dp,1);
     p3 += "</div>\n\r";
-       
+
+    // altitude
     p3 += "<div id=\"a\" class=\"bo\" style=\"background-color:#669966; font-size:13pt;\">";
     p3 += String(a,1);
     p3 += "m";
