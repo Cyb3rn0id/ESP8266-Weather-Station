@@ -533,6 +533,7 @@ void loop()
 
     // delta pressure
     p3 += "<div id=\"dp\" class=\"bo\" style=\"background-color:#339966; font-size:15pt;\">";
+    if (dp>0) {p3 += "+";} 
     p3 += String(dp,1);
     p3 += "</div>\n\r";
 
