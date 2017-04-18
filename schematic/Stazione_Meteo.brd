@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="7.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -11270,43 +11270,6 @@ Extended by Federico Battaglin &lt;author&gt;&amp;lt;federico.rd@fdpinternationa
 </package>
 </packages>
 </library>
-<library name="diode">
-<description>&lt;b&gt;Diodes&lt;/b&gt;&lt;p&gt;
-Based on the following sources:
-&lt;ul&gt;
-&lt;li&gt;Motorola : www.onsemi.com
-&lt;li&gt;Fairchild : www.fairchildsemi.com
-&lt;li&gt;Philips : www.semiconductors.com
-&lt;li&gt;Vishay : www.vishay.de
-&lt;/ul&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="DO41-10">
-<description>&lt;B&gt;DIODE&lt;/B&gt;&lt;p&gt;
-diameter 2.54 mm, horizontal, grid 10.16 mm</description>
-<wire x1="2.032" y1="-1.27" x2="-2.032" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="2.032" y1="-1.27" x2="2.032" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-2.032" y1="1.27" x2="2.032" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-2.032" y1="1.27" x2="-2.032" y2="-1.27" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="0" x2="4.064" y2="0" width="0.762" layer="51"/>
-<wire x1="-5.08" y1="0" x2="-4.064" y2="0" width="0.762" layer="51"/>
-<wire x1="-0.635" y1="0" x2="0" y2="0" width="0.1524" layer="21"/>
-<wire x1="1.016" y1="0.635" x2="1.016" y2="-0.635" width="0.1524" layer="21"/>
-<wire x1="1.016" y1="-0.635" x2="0" y2="0" width="0.1524" layer="21"/>
-<wire x1="0" y1="0" x2="1.524" y2="0" width="0.1524" layer="21"/>
-<wire x1="0" y1="0" x2="1.016" y2="0.635" width="0.1524" layer="21"/>
-<wire x1="0" y1="0.635" x2="0" y2="0" width="0.1524" layer="21"/>
-<wire x1="0" y1="0" x2="0" y2="-0.635" width="0.1524" layer="21"/>
-<pad name="A" x="5.08" y="0" drill="1" diameter="1.9304"/>
-<pad name="C" x="-5.08" y="0" drill="1" diameter="1.9304"/>
-<text x="-2.032" y="1.651" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-2.032" y="-2.794" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<rectangle x1="-1.651" y1="-1.27" x2="-1.143" y2="1.27" layer="21"/>
-<rectangle x1="2.032" y1="-0.381" x2="3.937" y2="0.381" layer="21"/>
-<rectangle x1="-3.937" y1="-0.381" x2="-2.032" y2="0.381" layer="21"/>
-</package>
-</packages>
-</library>
 <library name="switch-omron">
 <description>&lt;b&gt;Omron Switches&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
@@ -11896,10 +11859,6 @@ design rules under a new name.</description>
 <attribute name="NAME" x="41.14875" y="74.0616" size="1.27" layer="25" font="vector" ratio="10" rot="R180"/>
 <attribute name="VALUE" x="40.2034" y="72.7004" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="D1" library="diode" package="DO41-10" value="1N4004" x="12.5175" y="61.84125" smashed="yes">
-<attribute name="NAME" x="11.91425" y="63.3335" size="1.27" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="9.2155" y="59.206" size="1.27" layer="27" font="vector" ratio="10"/>
-</element>
 <element name="S1" library="switch-omron" package="B3F-10XX" value="" x="28.06375" y="69.47625" smashed="yes" rot="R180">
 <attribute name="OC_FARNELL" value="176432" x="28.06375" y="69.47625" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="B3F-1000" x="28.06375" y="69.47625" size="1.778" layer="27" rot="R180" display="off"/>
@@ -12103,15 +12062,8 @@ design rules under a new name.</description>
 <wire x1="16.1925" y1="18.25625" x2="15.08125" y2="17.145" width="0.8128" layer="16"/>
 <wire x1="15.08125" y1="17.145" x2="11.43" y2="17.145" width="0.8128" layer="16"/>
 </signal>
-<signal name="N$5">
-<contactref element="X1" pad="1"/>
-<contactref element="D1" pad="A"/>
-<wire x1="15" y1="69.77" x2="15" y2="64.43875" width="0.8128" layer="16"/>
-<wire x1="15" y1="64.43875" x2="17.5975" y2="61.84125" width="0.8128" layer="16"/>
-</signal>
 <signal name="+5V">
 <contactref element="C6" pad="+"/>
-<contactref element="D1" pad="C"/>
 <contactref element="C1" pad="1"/>
 <contactref element="U$1" pad="VIN"/>
 <wire x1="19.05" y1="13.97" x2="19.05" y2="48.26" width="0.8128" layer="16"/>
@@ -12133,13 +12085,9 @@ design rules under a new name.</description>
 <wire x1="11.43" y1="12.065" x2="17.145" y2="12.065" width="0.8128" layer="16"/>
 <wire x1="17.145" y1="12.065" x2="19.05" y2="13.97" width="0.8128" layer="16"/>
 <contactref element="C5" pad="1"/>
-<wire x1="7.4375" y1="61.84125" x2="7.4375" y2="58.7075" width="0.8128" layer="16"/>
-<wire x1="7.4375" y1="58.7075" x2="6.115" y2="57.385" width="0.8128" layer="16"/>
-<wire x1="6.115" y1="57.385" x2="5.1" y2="56.37" width="0.8128" layer="16"/>
 <wire x1="6.35" y1="47.3075" x2="6.35" y2="49.53" width="0.8128" layer="16"/>
 <wire x1="6.35" y1="49.53" x2="7.62" y2="50.8" width="0.8128" layer="16"/>
 <wire x1="7.62" y1="50.8" x2="7.62" y2="55.88" width="0.8128" layer="16"/>
-<wire x1="7.62" y1="55.88" x2="6.115" y2="57.385" width="0.8128" layer="16"/>
 <wire x1="6.35" y1="19.05" x2="9.36625" y2="16.03375" width="0.8128" layer="16"/>
 <wire x1="9.36625" y1="16.03375" x2="9.36625" y2="12.365" width="0.8128" layer="16"/>
 <wire x1="9.36625" y1="12.365" x2="9.68375" y2="12.0475" width="0.8128" layer="16"/>
@@ -12151,6 +12099,15 @@ design rules under a new name.</description>
 <wire x1="6.35" y1="24.28875" x2="9.36625" y2="27.305" width="0.8128" layer="16"/>
 <wire x1="9.36625" y1="27.305" x2="9.36625" y2="31.115" width="0.8128" layer="16"/>
 <wire x1="9.36625" y1="31.115" x2="4.683125" y2="35.798125" width="0.8128" layer="16"/>
+<contactref element="X1" pad="1"/>
+<wire x1="5.1" y1="56.37" x2="7.13" y2="56.37" width="0.8128" layer="16"/>
+<wire x1="7.13" y1="56.37" x2="7.62" y2="55.88" width="0.8128" layer="16"/>
+<wire x1="7.13" y1="56.37" x2="7.13" y2="60.47" width="0.8128" layer="16"/>
+<wire x1="7.13" y1="60.47" x2="8.89" y2="62.23" width="0.8128" layer="16"/>
+<wire x1="8.89" y1="62.23" x2="12.6746" y2="62.23" width="0.8128" layer="16"/>
+<wire x1="12.6746" y1="62.23" x2="15.0368" y2="64.5922" width="0.8128" layer="16"/>
+<wire x1="15.0368" y1="64.5922" x2="15.0368" y2="69.7332" width="0.8128" layer="16"/>
+<wire x1="15.0368" y1="69.7332" x2="15" y2="69.77" width="0.8128" layer="16"/>
 </signal>
 <signal name="N$9">
 <contactref element="U$1" pad="D4/GPIO2"/>
