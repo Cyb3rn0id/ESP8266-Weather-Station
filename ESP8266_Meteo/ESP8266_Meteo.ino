@@ -64,7 +64,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 // Change this according the path where you've uploaded the icons, useful for viewing
 // the icon on home page when you pin the url
-String IconsHost="http://www.[YOURHOT].com/[PATH-TO-ICONS]/";
+String IconsHost="http://www.[YOURHOST].com/[PATH-TO-ICONS]/";
 #include "webpage.h"
 
 /*
