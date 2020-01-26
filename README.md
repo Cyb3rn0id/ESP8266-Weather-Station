@@ -6,3 +6,9 @@ Shows Temperature, Humidity, Heat Index, Pressure, Altitude, Minimum and Maxim T
 Repository has 2 versions:  
 - Server version (you connect cirectly to station IP address)
 - MQTT version (you need an MQTT Broker and a system for visualize data: I use a Raspberry Pi with Mosquitto and NodeRed)
+
+##Sensors used
+- DHT22 for Temperature and Humidity
+- BME280 for atmosferic pressure
+
+BME280 has also a temperature sensor but I found it inaccurate.
