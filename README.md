@@ -11,5 +11,4 @@ I made 2 versions:
 - DHT22 for Temperature and Humidity
 - BME280 for atmosferic pressure
 
-BME280 has also a temperature sensor but I found it inaccurate.  
 In the picture I've enclosed circuit and a little 220V->5V switching PSU in an IP56 external box with transparent lid: it's made by Gewiss and box code is GW 44 426
